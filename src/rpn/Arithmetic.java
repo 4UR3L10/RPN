@@ -82,42 +82,18 @@ public class Arithmetic
             {
                 current = token.charAt(0);
 
-                if (isParentheses(current)) // Bullet # 2 begins  checkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                if (isParentheses(current)) // Bullet # 2 begins 
                 {
                     if (stk.empty() || current == Constants.LEFT_NORMAL)
                     {
-
-                        // push this element on the stack;
-//                        stk.push(current); testing
                         stk.push(current);
                     } 
                     else if (current == Constants.RIGHT_NORMAL)
                     {
                         try
-                        {
-                            /* 
-                                * Some details ... whatever is popped from the
- 				* stack is an object, hence you must cast this
- 				* object to its proper type, then extract its
- 				* primitive data (type) value.
-                            */
-                            
-//                            Character ch = (Character) stk.pop();
-//                            char top = ch.charValue();
-//                            
-//
-//                            while (top != Constants.LEFT_NORMAL)
-//                            {
-//                                /*
-//                                    * Append token popped onto the output string
-//				    * Place at least one blank space between 
-//				    * each token
-//                                */
-//                                postfix = postfix + stk.pop() + " "; // TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG      
-//                               
-//                            }   
+                        {   
                             boolean endLoop = false;
-                            while(endLoop == false)
+                            while(!endLoop)
                             {
                                 String hello = stk.pop().toString();
                                 
@@ -128,18 +104,12 @@ public class Arithmetic
                                 else
                                 {
                                     postfix = postfix + hello + " ";
-                                }
-                                
-                               // System.out.println(hello);
-                                
+                                }                              
                             }
-                            
-                            
-                            
                         } 
                         catch (EmptyStackException e)
-                        {   //*CHECKkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk                         
-                            System.out.println(e.toString());
+                        {   //*CHECKkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk and verify the outputttttttttttttttttttttttttttttt                        
+                           // System.out.println(e.toString());
                         }
                     }
                 }// Bullet # 2 ends
@@ -251,10 +221,74 @@ public class Arithmetic
     {
         // define method
         return postfix;
-    }
+    }  
     
-    void evaluateRPN()
-    {
+    double operation(double t1, double t2, char operator)
+    {      
+        if (operator == '+')
+        {
+            return t2 + t1;
+        }
+
+        if (operator == '-')
+        {
+            return t2 - t1;
+        }
         
+        if (operator == '*')
+        {
+            return t2 * t1;
+        }       
+        
+        return t2 / t1;       
+    }
+        
+    void evaluateRPN() // check for the stack if integers.................................................
+    {        
+        stk.clear(); // Re-using the stack object.
+        Stack intStack = new Stack();
+        double result = 0.0;      
+               
+        Scanner scan = new Scanner(postfix);
+     
+        while (scan.hasNext())
+        {
+            String token = scan.next();
+            
+            if (isNumber(token)) 
+            {    
+              stk.push(token);        
+            } 
+            
+            else
+            {
+                try
+                {
+                    double t1 = Double.valueOf(stk.pop().toString());  
+                    double t2 = Double.valueOf(stk.pop().toString());                    
+//                    int total = t2 + t1;
+//                    stk.push(total);
+//                    System.out.println("Total:" + total);
+                    char current = token.charAt(0);
+                    stk.push(operation(t1, t2, current));
+                    
+                    
+                } 
+                catch (EmptyStackException e)
+                {                                          
+                    System.out.println(e.toString() + "No More Numbers on stack");
+                }
+            }
+        }        
+        
+        try
+        {
+            System.out.println("The result is: " + stk.pop().toString());
+            stk.clear();
+        } 
+        catch (EmptyStackException e)
+        {
+            System.out.println(e.toString() + "Stack empty when triying to get the result");
+        }
     }
 }

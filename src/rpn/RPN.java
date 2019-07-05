@@ -21,10 +21,10 @@ public class RPN
         String s[] =
         {
             "5 + ) * ( 2",
-            " 2 + ( - 3 * 5 ) ", //problemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.
-            "(( 2 + 3 ) * 5 ) * 8 ",   //problemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.
+            " 2 + ( - 3 * 5 ) ",
+            "(( 2 + 3 ) * 5 ) * 8 ",  
             "5 * 10 + ( 15 - 20 ) )  - 25",
-            " 5 + ( 5 *  10 + ( 15 - 20 )  - 25 ) * 9"   //problemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.
+            " 5 + ( 5 *  10 + ( 15 - 20 )  - 25 ) * 9"   
         };
         
         //Going throught the array.
