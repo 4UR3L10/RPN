@@ -50,6 +50,7 @@ public class RPN
                 System.out.println("Expression is not balanced\n");
             }            
             
+            // Just to do the output easier to read.
             System.out.println("------------------------------------------------------------------------------------------------------");            
         }
     }

@@ -1,3 +1,8 @@
+/*
+    Author: Aurelio Martinez 
+    Class:  COP3337-U02C-1195   
+    Copyright© Aurelio Martinez
+*/
 package rpn;
 
 import java.util.Stack;
@@ -198,7 +203,7 @@ public class Arithmetic
         }   
     }
 
-    boolean hasHigherPrecedence(char top, char current) //CHeckkkkkkkkkkkkkkkkkk
+    boolean hasHigherPrecedence(char top, char current) 
     {
         // define this method
         if(top == '*' || top == '/')
@@ -240,7 +245,7 @@ public class Arithmetic
         return t2 / t1;       
     }
         
-    void evaluateRPN() // check for the stack if integers.................................................
+    void evaluateRPN() 
     {        
         stk.clear(); // Re-using the stack object.
         Stack intStack = new Stack();
@@ -248,23 +253,26 @@ public class Arithmetic
                
         Scanner scan = new Scanner(postfix);
      
+        // Reading the expression.
         while (scan.hasNext())
         {
             String token = scan.next();
             
+            // If Number check if it is and push in case of true.
             if (isNumber(token)) 
             {    
               stk.push(token);        
             } 
-            
+            // Else must be an operator.
             else
             {
+                // Getting the two values and the operator conver to char.
                 try
                 {
                     double t1 = Double.valueOf(stk.pop().toString());  
                     double t2 = Double.valueOf(stk.pop().toString());                  
                     char current = token.charAt(0);
-                    stk.push(operation(t1, t2, current));                    
+                    stk.push(operation(t1, t2, current)); // Does the calculation and push it to the stack.                   
                 } 
                 catch (EmptyStackException e)
                 {                                          
@@ -284,3 +292,8 @@ public class Arithmetic
         }
     }
 }
+/*
+    Author: Aurelio Martinez 
+    Class:  COP3337-U02C-1195   
+    Copyright© Aurelio Martinez
+*/
