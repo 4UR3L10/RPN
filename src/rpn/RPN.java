@@ -1,11 +1,16 @@
 /*
+    Author: Aurelio Martinez 
+    Class:  COP3337-U02C-1195   
+    Copyright© Aurelio Martinez
+*/
+/*
+Output:
 1-N.B  ')'
 2-B but Missing a #
 3-200
 4-N.B  '('
 5-185
 */
-
 
 package rpn;
 
@@ -38,17 +43,20 @@ public class RPN
                 System.out.println("Expression " + s[i] + " is balanced\n");
                 a.postfixExpression();
                 System.out.println("The post fixed expression is " + a.getPostfix());
-                a.evaluateRPN();
-
-                // Supply the necessary codes to determine the validity of your answers
-            } else
+                a.evaluateRPN();                
+            } 
+            else
             {
                 System.out.println("Expression is not balanced\n");
-            }
+            }            
             
-            //testingggg delete
-            System.out.println("------------------------------------------------------------------------------------------------------");
-            //testingggg delete
+            System.out.println("------------------------------------------------------------------------------------------------------");            
         }
     }
 }
+
+/*
+    Author: Aurelio Martinez 
+    Class:  COP3337-U02C-1195   
+    Copyright© Aurelio Martinez
+*/

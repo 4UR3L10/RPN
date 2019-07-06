@@ -108,7 +108,7 @@ public class Arithmetic
                             }
                         } 
                         catch (EmptyStackException e)
-                        {   //*CHECKkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk and verify the outputttttttttttttttttttttttttttttt                        
+                        {                          
                            // System.out.println(e.toString());
                         }
                     }
@@ -147,16 +147,13 @@ public class Arithmetic
 
         try
         {
-//            while (!stk.empty()) // Bullet # 4
-//			;	// complete this
             while (!stk.empty()) // Bullet # 4
             {       
-                postfix = postfix + stk.pop() + " "; // testingggggggggggggggggggg
+                postfix = postfix + stk.pop() + " ";
             }
         } 
         catch (EmptyStackException e)
-        {
-            //*CHECKkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk                         
+        {                                  
             System.out.println(e.toString());
         }
     }
@@ -265,18 +262,13 @@ public class Arithmetic
                 try
                 {
                     double t1 = Double.valueOf(stk.pop().toString());  
-                    double t2 = Double.valueOf(stk.pop().toString());                    
-//                    int total = t2 + t1;
-//                    stk.push(total);
-//                    System.out.println("Total:" + total);
+                    double t2 = Double.valueOf(stk.pop().toString());                  
                     char current = token.charAt(0);
-                    stk.push(operation(t1, t2, current));
-                    
-                    
+                    stk.push(operation(t1, t2, current));                    
                 } 
                 catch (EmptyStackException e)
                 {                                          
-                    System.out.println(e.toString() + "No More Numbers on stack");
+                    System.out.println(e.toString() + ": NO ENOUGH NUMBERS IN THE STACK TO DO CALCULATIONS");
                 }
             }
         }        
@@ -288,7 +280,7 @@ public class Arithmetic
         } 
         catch (EmptyStackException e)
         {
-            System.out.println(e.toString() + "Stack empty when triying to get the result");
+            System.out.println(e.toString() + " STACK EMPTY WHEN TRIYING TO GET THE RESULT FROM THE STACK");
         }
     }
 }
